@@ -12,10 +12,10 @@ import java.util.stream.Collectors;
 
 @WebServlet(name = "LaptopServlet", value = "/laptop")
 public class LaptopServlet extends HttpServlet {
-    // Путь к JSON
+
     private static final String FILE_PATH = "C:\\Users\\Даниил-ПК\\IdeaProjects\\Lab3OOPin\\src\\main\\java\\com\\example\\lab3oopin\\laptop.json";
 
-    // Добавление объекта к JSON
+
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
         response.setContentType("application/json");
@@ -32,7 +32,7 @@ public class LaptopServlet extends HttpServlet {
         response.getWriter().write(laptopsJsonArray.toString());
     }
 
-    // передача клиенту JSON
+
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
         response.setContentType("application/json");
@@ -42,7 +42,7 @@ public class LaptopServlet extends HttpServlet {
         response.getWriter().write(laptopsJson);
     }
 
-    // Чтение JSON
+
     private String readJSON() {
         try (BufferedReader reader = new BufferedReader(new FileReader(FILE_PATH))) {
             return reader.lines().collect(Collectors.joining());
@@ -51,7 +51,7 @@ public class LaptopServlet extends HttpServlet {
             return "[]";
         }
     }
-    // Запись в JSON
+
     private void writeJSON(String laptopsJson) {
         try (FileWriter fileWriter = new FileWriter(FILE_PATH)) {
             fileWriter.write(laptopsJson);
